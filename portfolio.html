@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nithyadharshini KM Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a two-sided ledger. Code on one side, business on the other, meeting in one profile. */
+:root{
+  --bg:#f2f5f4;
+  --surface:#ffffff;
+  --fg:#12201e;
+  --muted:#51615e;
+  --line:#d3dcd9;
+  --accent:#0b6a5c;
+  --accent-ink:#ffffff;
+  --mark:#f0b429;
+  --font-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --font-body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1816;--surface:#15231f;--fg:#e6efec;--muted:#9bb0aa;--line:#27393b;
+    --accent:#4cc9b0;--accent-ink:#06211c;--mark:#f0b429;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1816;--surface:#15231f;--fg:#e6efec;--muted:#9bb0aa;--line:#27393b;
+  --accent:#4cc9b0;--accent-ink:#06211c;--mark:#f0b429;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--fg);
+  font-family:var(--font-body);font-size:16px;line-height:1.6;
+  padding-block:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.wrap{max-width:1040px;margin:0 auto}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+p{margin:0}
+
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;align-items:center;padding-block:20px;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+.bar nav{display:flex;flex-wrap:wrap;gap:6px 20px}
+.bar a{color:var(--muted);text-decoration:none}
+.bar a:hover{color:var(--accent)}
+.status{display:inline-flex;align-items:center;gap:8px;color:var(--fg)}
+.status i{width:9px;height:9px;border-radius:50%;background:var(--mark);display:inline-block}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;padding-block:56px 48px;align-items:end}
+.kicker{font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+h1{font-size:clamp(2.6rem,7vw,5rem);line-height:.98;font-weight:700;letter-spacing:-.02em}
+h1 span{background:linear-gradient(transparent 62%,var(--mark) 62%,var(--mark) 90%,transparent 90%);padding-inline:2px}
+.lede{margin-top:24px;font-size:1.15rem;max-width:34em;color:var(--muted)}
+.lede b{color:var(--fg);font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;padding:12px 20px;border-radius:6px;font-weight:500;text-decoration:none;border:1.5px solid var(--accent);transition:transform .15s ease}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent)}
+.btn:hover{transform:translateY(-1px)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px}
+.facts{display:grid;gap:14px;margin:0}
+.facts div{display:grid;gap:2px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.facts div:last-child{border:0;padding:0}
+.facts dt{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-weight:500}
+
+section{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px 40px;padding-block:44px;border-top:1px solid var(--line)}
+section>h2{font-size:1.05rem;font-weight:700;letter-spacing:.01em;position:sticky;top:16px;align-self:start}
+section>h2 small{display:block;margin-top:4px;font-family:var(--font-mono);font-weight:400;font-size:12px;color:var(--muted);letter-spacing:.04em}
+.body{display:grid;gap:20px;min-width:0}
+.body p{max-width:62ch}
+
+.sides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.side h3{font-size:1.2rem;margin-bottom:6px}
+.side .tag{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+.side p{color:var(--muted);font-size:.97rem}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:5px 12px;font-family:var(--font-mono);font-size:13px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.group-label{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.proj{padding:22px;display:grid;gap:12px;align-content:start}
+.proj h3{font-size:1.15rem}
+.proj p{color:var(--muted);font-size:.95rem}
+.proj .stack{display:flex;flex-wrap:wrap;gap:6px}
+.proj .stack span{font-family:var(--font-mono);font-size:12px;padding:3px 9px;border-radius:4px;background:var(--bg);border:1px solid var(--line)}
+.proj .type{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+
+.course{display:grid;gap:4px;padding-block:16px;border-bottom:1px solid var(--line)}
+.course:first-child{padding-top:0}
+.course:last-child{border:0;padding-bottom:0}
+.course .code{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.course h3{font-size:1.1rem}
+.course p{color:var(--muted);font-size:.95rem}
+
+.row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:6px 24px;padding:20px}
+.row .when{font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+.row h3{font-size:1.1rem;margin-bottom:2px}
+.row .org{color:var(--accent);font-weight:500;margin-bottom:8px}
+.row ul{margin:0;padding-left:18px;color:var(--muted);font-size:.95rem;display:grid;gap:4px}
+.list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.list li{padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.list b{font-weight:500}
+.list span{color:var(--muted)}
+
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0}
+.contact-grid div{padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.contact-grid dt{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.contact-grid dd{margin:0;font-family:var(--font-mono);font-size:14px;overflow-wrap:anywhere}
+
+.pipeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.step{padding:16px;border:1px solid var(--line);border-radius:8px;background:var(--surface);display:grid;gap:4px;align-content:start}
+.step b{font-family:var(--font-display);font-size:1.05rem}
+.step small{color:var(--muted);font-size:.85rem;line-height:1.45}
+.step .n{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.dash{padding:0;overflow:hidden}
+.dash-head{display:flex;flex-wrap:wrap;gap:14px 24px;justify-content:space-between;align-items:flex-start;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dash-head h3{font-size:1.1rem}
+.controls{display:grid;gap:8px;min-width:0}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{font-family:var(--font-mono);font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.kpi{padding:16px 20px;background:var(--surface)}
+.kpi .v{font-family:var(--font-display);font-size:1.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.2}
+.kpi .l{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chart-wrap{padding:16px 20px 8px;display:grid;gap:8px}
+.chart-wrap svg{width:100%;height:auto;display:block}
+.note{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.ax{fill:var(--muted);font-family:var(--font-mono);font-size:13px}
+.gl{stroke:var(--line);stroke-width:1}
+.bar{fill:var(--accent)}
+.bar.best{fill:var(--mark)}
+.val{fill:var(--fg);font-family:var(--font-mono);font-size:13px;font-weight:500}
+.insight{padding:14px 20px 18px;color:var(--muted);font-size:.95rem;max-width:none!important}
+.insight b{color:var(--fg);font-weight:500}
+footer{padding-block:32px 40px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:minmax(0,1fr);padding-block:36px 32px;gap:28px}
+  section{grid-template-columns:minmax(0,1fr);padding-block:32px}
+  section>h2{position:static}
+  .sides{grid-template-columns:minmax(0,1fr)}
+  .row{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+html{color-scheme:light dark}
+body{margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="bar">
+    <span class="status"><i></i> Data Analytics Intern at Infotact Solutions · open to entry-level roles</span>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#data">Data</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <p class="kicker">Data Analytics Intern · B.Tech CSBS 2027</p>
+      <h1>Nithyadharshini <span>KM</span></h1>
+      <p class="lede">I turn raw data into decisions. Final-year <b>Computer Science and Business Systems</b> student, currently a <b>Data Analytics Intern</b>, with a strong base in <b>Java</b> and hands-on experience building full-stack apps and backend APIs with the MERN stack.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="#projects">See my work</a>
+      </div>
+    </div>
+    <aside class="card" aria-label="Profile summary">
+      <dl class="facts">
+        <div><dt>Degree</dt><dd>B.Tech, Computer Science and Business Systems</dd></div>
+        <div><dt>College</dt><dd>Muthayammal Engineering College (Autonomous), Rasipuram</dd></div>
+        <div><dt>CGPA</dt><dd>8.1</dd></div>
+        <div><dt>Looking for</dt><dd>Entry-level software and backend roles</dd></div>
+      </dl>
+    </aside>
+  </div>
+
+  <section id="about">
+    <h2>About<small>who I am</small></h2>
+    <div class="body">
+      <p>I am a detail-oriented student who enjoys turning a problem into working software. I have built a task management system, an online food ordering site, and the backend of a retail billing system during my backend internship, and I now work with data as a Data Analytics Intern at Infotact Solutions. I am looking for an entry-level opportunity where I can apply my technical problem-solving and contribute to the organisation's growth.</p>
+      <div class="sides">
+        <div class="card side">
+          <span class="tag">Technology side</span>
+          <h3>Build and analyse</h3>
+          <p>Java, JavaScript, the MERN stack, REST APIs, MySQL and MongoDB, with Power BI for data.</p>
+        </div>
+        <div class="card side">
+          <span class="tag">Business side</span>
+          <h3>Plan and decide</h3>
+          <p>Project finance, entrepreneurship and decision analysis from my CSBS coursework, so what I build can be costed and justified.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects<small>selected work</small></h2>
+    <div class="body">
+      <div class="projects">
+        <article class="card proj">
+          <span class="type">Full-stack web app</span>
+          <h3>Task Management System</h3>
+          <p>A full-stack application that helps individuals and teams organise, track and manage daily activities and project milestones.</p>
+          <div class="stack"><span>MongoDB</span><span>Express.js</span><span>React</span><span>Node.js</span></div>
+        </article>
+        <article class="card proj">
+          <span class="type">Responsive web app</span>
+          <h3>Online Food Ordering System</h3>
+          <p>A responsive ordering site with menu browsing, item selection and order placement, built to work well on every device.</p>
+          <div class="stack"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span></div>
+        </article>
+        <article class="card proj">
+          <span class="type">Internship capstone</span>
+          <h3>Invoice Generator, Retail Billing System</h3>
+          <p>Backend modules and REST APIs for billing workflows and user management, with MongoDB for data storage and retrieval.</p>
+          <div class="stack"><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>REST APIs</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="data">
+    <h2>Data analytics<small>how I work with data</small></h2>
+    <div class="body">
+      <div class="pipeline">
+        <div class="step"><span class="n">Step 1</span><b>Collect</b><small>Query and pull data from MySQL and MongoDB</small></div>
+        <div class="step"><span class="n">Step 2</span><b>Clean</b><small>Fix gaps, duplicates and inconsistent values</small></div>
+        <div class="step"><span class="n">Step 3</span><b>Analyse</b><small>Find trends, compare groups, test ideas</small></div>
+        <div class="step"><span class="n">Step 4</span><b>Visualise</b><small>Build dashboards and charts in Power BI</small></div>
+        <div class="step"><span class="n">Step 5</span><b>Report</b><small>Explain what changed and what to do next</small></div>
+      </div>
+
+      <div class="card dash">
+        <div class="dash-head">
+          <div>
+            <h3>Sales performance dashboard</h3>
+            <p class="note">Interactive demo with sample data, not from any employer.</p>
+          </div>
+          <div class="controls">
+            <div class="seg" id="seg-region" role="group" aria-label="Region">
+              <button type="button" data-region="All" aria-pressed="true">All regions</button>
+              <button type="button" data-region="North" aria-pressed="false">North</button>
+              <button type="button" data-region="South" aria-pressed="false">South</button>
+              <button type="button" data-region="East" aria-pressed="false">East</button>
+              <button type="button" data-region="West" aria-pressed="false">West</button>
+            </div>
+            <div class="seg" id="seg-metric" role="group" aria-label="Metric">
+              <button type="button" data-metric="rev" aria-pressed="true">Revenue</button>
+              <button type="button" data-metric="ord" aria-pressed="false">Orders</button>
+            </div>
+          </div>
+        </div>
+        <div class="kpis" id="kpis"></div>
+        <div class="chart-wrap">
+          <p class="note" id="chart-title"></p>
+          <svg id="chart" viewBox="0 0 480 260" role="img" aria-label="Bar chart of monthly sales, January to June"></svg>
+        </div>
+        <p class="insight" id="insight"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills<small>tools and methods</small></h2>
+    <div class="body">
+      <div>
+        <p class="group-label">Programming languages</p>
+        <div class="chips"><span class="chip">Java</span><span class="chip">JavaScript</span></div>
+      </div>
+      <div>
+        <p class="group-label">Frameworks and web</p>
+        <div class="chips"><span class="chip">React.js</span><span class="chip">Express.js</span><span class="chip">Node.js</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Bootstrap</span></div>
+      </div>
+      <div>
+        <p class="group-label">Databases and tools</p>
+        <div class="chips"><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Power BI</span><span class="chip">Visual Studio Code</span><span class="chip">Eclipse</span></div>
+      </div>
+      <div>
+        <p class="group-label">Data analytics</p>
+        <div class="chips"><span class="chip">Data cleaning</span><span class="chip">SQL queries</span><span class="chip">Data visualisation</span><span class="chip">Power BI dashboards</span><span class="chip">Reporting</span></div>
+      </div>
+      <div>
+        <p class="group-label">Business and analysis</p>
+        <div class="chips"><span class="chip">Decision tree analysis</span><span class="chip">Multi-project planning</span><span class="chip">Financial planning</span><span class="chip">Social network analysis</span><span class="chip">Search engine optimization</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience<small>internships</small></h2>
+    <div class="body">
+      <article class="card row">
+        <div class="when">Current</div>
+        <div>
+          <h3>Data Analytics Intern</h3>
+          <p class="org">Infotact Solutions</p>
+          <ul>
+            <li>Working with data to find insights and present them as reports and dashboards.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card row">
+        <div class="when">Internship</div>
+        <div>
+          <h3>Node Backend Developer Intern</h3>
+          <p class="org">Zealous Tech Corp</p>
+          <ul>
+            <li>Worked on the capstone project Invoice Generator, a retail billing system.</li>
+            <li>Designed and implemented backend modules using Node.js and Express.js.</li>
+            <li>Integrated MongoDB for efficient data storage and retrieval.</li>
+            <li>Developed and tested REST APIs for billing workflows and user management.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <h2>Credentials<small>certifications, achievements</small></h2>
+    <div class="body">
+      <div>
+        <p class="group-label">Certifications</p>
+        <ul class="list">
+          <li><b>Microsoft Azure Fundamentals (AZ-900)</b> <span>· Microsoft Certified</span></li>
+          <li><b>Distributed Systems</b> <span>· NPTEL</span></li>
+          <li><b>Blockchain and its Applications</b> <span>· Professional certification</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="group-label">Achievements</p>
+        <ul class="list">
+          <li><b>HackerRank</b> <span>· 3-star badge in Java and C, 1-star badge in Problem Solving</span></li>
+          <li><b>National level workshop</b> <span>· UI/UX Design</span></li>
+          <li><b>Technical events</b> <span>· Paper presentations, college symposiums and multiple academic mini-projects</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="coursework">
+    <h2>Coursework<small>Year IV, Semester VII</small></h2>
+    <div class="body">
+      <div>
+        <div class="course">
+          <span class="code">23CBC45</span>
+          <h3>Project Finance Management</h3>
+          <p>Seminars on managing multiple projects under constraints, and on decision tree analysis for choosing between uncertain options.</p>
+        </div>
+        <div class="course">
+          <span class="code">23CBP05</span>
+          <h3>Entrepreneurship Development</h3>
+          <p>Seminars on the need for institutional support for new ventures, and on building a financial plan.</p>
+        </div>
+        <div class="course">
+          <span class="code">23CBC25</span>
+          <h3>Social, Text and Media Analytics</h3>
+          <p>Seminars on search engine optimization and on social network analysis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact<small>let us talk</small></h2>
+    <div class="body">
+      <p>I am open to internships and entry-level roles. The quickest way to reach me is by email.</p>
+      <dl class="contact-grid">
+        <div><dt>Email</dt><dd>nithyadharshini328@gmail.com</dd></div>
+        <div><dt>Location</dt><dd>Salem, Tamil Nadu, India</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <footer>
+    <span>Nithyadharshini KM</span>
+    <span>B.Tech CSBS · Muthayammal Engineering College</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var months=['Jan','Feb','Mar','Apr','May','Jun'];
+  var data={
+    North:{rev:[420,465,510,480,560,610],ord:[210,228,245,236,270,291]},
+    South:{rev:[380,410,455,500,520,575],ord:[190,205,222,243,251,276]},
+    East:{rev:[290,305,340,330,385,420],ord:[150,158,171,166,190,205]},
+    West:{rev:[350,372,398,440,470,505],ord:[172,181,192,212,226,243]}
+  };
+  var region='All', metric='rev';
+
+  function sum(a){return a.reduce(function(x,y){return x+y;},0);}
+  function series(key){
+    if(region!=='All'){return data[region][key].slice();}
+    return months.map(function(_,i){
+      return sum(Object.keys(data).map(function(r){return data[r][key][i];}));
+    });
+  }
+  function fmt(n){return n.toLocaleString('en-IN');}
+  function niceTop(max){
+    var raw=max/4, pow=Math.pow(10,Math.floor(Math.log(raw)/Math.LN10)), step=pow;
+    [1,2,5,10].some(function(m){step=m*pow;return step>=raw;});
+    return {step:step, top:Math.ceil(max/step)*step};
+  }
+
+  function render(){
+    var rev=series('rev'), ord=series('ord');
+    var totalRev=sum(rev), totalOrd=sum(ord);
+    var aov=Math.round(totalRev*1000/totalOrd);
+    var label=region==='All'?'All regions':region;
+    document.getElementById('kpis').innerHTML=
+      '<div class="kpi"><div class="v">₹'+(totalRev/100).toFixed(1)+' lakh</div><div class="l">Revenue, Jan to Jun</div></div>'+
+      '<div class="kpi"><div class="v">'+fmt(totalOrd)+'</div><div class="l">Orders</div></div>'+
+      '<div class="kpi"><div class="v">₹'+fmt(aov)+'</div><div class="l">Average order value</div></div>';
+
+    var s=metric==='rev'?rev:ord;
+    var unit=metric==='rev'?'Revenue in ₹ thousand':'Number of orders';
+    document.getElementById('chart-title').textContent=label+' · '+unit+' by month';
+
+    var W=480,H=260,L=48,R=12,T=24,B=30;
+    var nt=niceTop(Math.max.apply(null,s)), top=nt.top, step=nt.step;
+    var plotH=H-T-B, bw=(W-L-R)/s.length, w=Math.round(bw*0.62);
+    function y(v){return T+plotH-(v/top)*plotH;}
+    var best=s.indexOf(Math.max.apply(null,s));
+    var out='';
+    for(var t=0;t<=top;t+=step){
+      out+='<line class="gl" x1="'+L+'" x2="'+(W-R)+'" y1="'+y(t)+'" y2="'+y(t)+'"/>'+
+           '<text class="ax" x="'+(L-8)+'" y="'+(y(t)+4)+'" text-anchor="end">'+fmt(t)+'</text>';
+    }
+    s.forEach(function(v,i){
+      var x=L+i*bw+(bw-w)/2, yy=y(v);
+      out+='<rect class="bar'+(i===best?' best':'')+'" x="'+x+'" y="'+yy+'" width="'+w+'" height="'+(T+plotH-yy)+'" rx="3"/>'+
+           '<text class="val" x="'+(x+w/2)+'" y="'+(yy-6)+'" text-anchor="middle">'+fmt(v)+'</text>'+
+           '<text class="ax" x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle">'+months[i]+'</text>';
+    });
+    document.getElementById('chart').innerHTML=out;
+
+    var growth=((s[s.length-1]-s[0])/s[0]*100).toFixed(0);
+    var what=metric==='rev'?'revenue':'orders';
+    document.getElementById('insight').innerHTML=
+      '<b>Insight:</b> '+label+' '+what+' grew <b>'+growth+'%</b> from January to June. The best month was <b>'+months[best]+'</b> ('+fmt(s[best])+'), highlighted in the chart.';
+  }
+
+  function wire(group,attr,set){
+    var btns=document.querySelectorAll(group+' button');
+    btns.forEach(function(b){
+      b.addEventListener('click',function(){
+        btns.forEach(function(o){o.setAttribute('aria-pressed',o===b?'true':'false');});
+        set(b.getAttribute(attr)); render();
+      });
+    });
+  }
+  wire('#seg-region','data-region',function(v){region=v;});
+  wire('#seg-metric','data-metric',function(v){metric=v;});
+  render();
+})();
+</script>
+</body>
+</html>
